@@ -1,6 +1,5 @@
 // Concat JS 
-var gulp = require('gulp');
-    plumber = require('gulp-plumber');
+var gulp = require('gulp'),
     concat = require('gulp-concat');
     
     gulp.task('concat-js', function() { 

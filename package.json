@@ -1,7 +1,7 @@
 {
     "name": "slush-studio",
     "description": "Slush generator for studio",
-    "version": "0.2.17",
+    "version": "0.2.21",
     "homepage": "https://github.com/djfsn/slush-studio",
     "author": {
         "name": "Dennis Jefferson",

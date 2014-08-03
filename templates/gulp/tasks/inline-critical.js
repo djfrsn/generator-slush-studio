@@ -1,7 +1,6 @@
 // Inlines critical css
-var gulp = require('gulp');
+var gulp = require('gulp'),
     smoosher = require('gulp-smoosher'); // https://github.com/gabrielflorit/gulp-smoosher
-    browserSync = require('browser-sync');
 
 gulp.task('inline-critical',function () {
 
