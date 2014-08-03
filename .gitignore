@@ -7,3 +7,4 @@ temp
 .idea
 app/lib/fonts/
 app/lib/img/
+templates/app/lib/js/brush/brush.js
