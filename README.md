@@ -1,4 +1,4 @@
-# slush-studio [![Build Status](https://secure.travis-ci.org/djfsn/slush-studio.png?branch=master)]
+# slush-studio 
 
 > Slush generator for [studio](https://github.com/djfrsn/gulp-studio)
 
