@@ -1,5 +1,9 @@
+*.css
+*.css.map
+app/index.html
 node_modules/
 temp
 *.log
 .idea
-.css
+app/lib/fonts/
+app/lib/img/
