@@ -1,14 +1,14 @@
-# slush-studio [![Build Status](https://secure.travis-ci.org/djfsn/slush-slush-studio.png?branch=master)](https://travis-ci.org/djfsn/slush-slush-studio) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-slush-studio.png)](http://badges.enytc.com/for/npm/slush-slush-studio)
+# slush-studio [![Build Status](https://secure.travis-ci.org/djfsn/slush-studio.png?branch=master)]
 
-> Slush generator for studio
+> Slush generator for [studio](https://github.com/djfrsn/gulp-studio)
 
 
 ## Getting Started
 
-Install `slush-slush-studio` globally:
+Install `slush-studio` globally:
 
 ```bash
-$ npm install -g slush-slush-studio
+$ npm install -g slush-studio
 ```
 
 ### Usage
@@ -16,29 +16,25 @@ $ npm install -g slush-slush-studio
 Create a new folder for your project:
 
 ```bash
-$ mkdir my-slush-slush-studio
+$ mkdir new-slush-studio
 ```
 
 Run the generator from within the new folder:
 
 ```bash
-$ cd my-slush-slush-studio && slush slush-studio
+$ cd new-slush-studio && slush slush-studio
 ```
 
-## Getting To Know Slush
+## Getting To Know Studio
 
-Slush is a tool that uses Gulp for project scaffolding.
-
-Slush does not contain anything "out of the box", except the ability to locate installed slush generators and to run them with liftoff.
-
-To find out more about Slush, check out the [documentation](https://github.com/klei/slush).
+To find out more about Studio, check out the [documentation](https://github.com/djfrsn/studio).
 
 ## Contributing
 
-See the [CONTRIBUTING Guidelines](https://github.com/djfsn/slush-slush-studio/blob/master/CONTRIBUTING.md)
+See the [CONTRIBUTING Guidelines](https://github.com/djfsn/slush-studio/blob/master/CONTRIBUTING.md)
 
 ## Support
-If you have any problem or suggestion please open an issue [here](https://github.com/djfsn/slush-slush-studio/issues).
+If you have any problem or suggestion please open an issue [here](https://github.com/djfsn/slush-studio/issues).
 
 ## License 
 
