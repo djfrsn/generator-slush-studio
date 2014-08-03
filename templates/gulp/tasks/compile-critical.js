@@ -5,15 +5,13 @@ var gulp = require('gulp');
     prefix = require('gulp-autoprefixer'); // https://github.com/ai/autoprefixer
 
 gulp.task('compile-critical', function () {
-    var source = 'app/lib/styles/critical/**/*.scss';
-        dest = 'app/lib/styles/critical/';
 
-    return gulp.src(source)
-        .pipe(newer(source))
+    return gulp.src(sourced.criticalSASS)
+        .pipe(newer(sourced.criticalSASS))
         .pipe(plumber())
         .pipe(sass({sourcemap: false, style: 'expanded'}))
         .pipe(prefix('last 2 version', "> 1%", "Firefox ESR", "Opera 12.1", "ie 9", "ie 8", "ie 7"))
         .pipe(comb('zen'))
         // Add gulp-notify
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest(sourced.critical));
 });

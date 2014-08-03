@@ -6,12 +6,12 @@ gulp.task('crit', function(callback) {
 });
 
 gulp.task('paint', [ 'setWatch', 'browser-sync'], function () {
-    gulp.watch([ 'app/lib/styles/**/*.scss', '!app/lib/styles/critical/*.css', '!app/lib/styles/critical/**/*.scss'],
+    gulp.watch([ sourced.sass, sourced.ignoreCritCSS, sourced.ignoreCritSASS],
      	['styles']);
-    gulp.watch([ '!app/lib/styles/**/*.scss', 'app/lib/styles/critical/**/*.scss'],
+    gulp.watch([ sourced.ignoreSASS, sourced.criticalSASS],
     	['crit']);
-    gulp.watch([ 'app/lib/include/**/*.html', 'app/easel.html'],
+    gulp.watch([ sourced.includes, sourced.easel],
     	['scaffold']);
-    gulp.watch([ 'app/lib/js/**/*.js'],
+    gulp.watch([ sourced.jsdir],
     	['brush']);
 });

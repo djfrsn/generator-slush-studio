@@ -4,11 +4,9 @@ var gulp = require('gulp');
     browserSync = require('browser-sync');
 
 gulp.task('inline-critical',function () {
-	var	source = 'app/index.html';
-		dest = 'app/';
 
-        return gulp.src(source)
+        return gulp.src(sourced.index)
         .pipe(smoosher())
         .pipe(browserSync.reload({stream:true}))
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest(sourced.app));
     });

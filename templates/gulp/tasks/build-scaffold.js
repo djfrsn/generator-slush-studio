@@ -6,17 +6,12 @@ var gulp = require('gulp');
 	rename = require("gulp-rename");
 
 gulp.task('build-scaffold', function() {
-	var source = [
-        'app/index.html' // Load scaffold here
-    ];
-		dest = 'dist/';
 
-	return gulp.src(source)
-        .pipe(newer(dest)) // pipe only newer files
+	return gulp.src(sourced.index)
 		.pipe(fileinclude())
 		.pipe(size())
 		.pipe(htmlmin({collapseWhitespace: true, removeComments: true, minifyCSS: true, minifyJS: true}))
 		.pipe(rename("index.html"))
 		.pipe(size())
-		.pipe(gulp.dest(dest));
+		.pipe(gulp.dest(dist.dir));
 });

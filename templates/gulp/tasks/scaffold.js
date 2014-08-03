@@ -2,31 +2,24 @@
 var gulp = require('gulp');
 	remember = require('gulp-remember'); 
 	fileinclude = require('gulp-file-include'); // https://github.com/coderhaoxin/gulp-file-include
-	prettify = require('gulp-prettify');
 	rename = require("gulp-rename");
 
 gulp.task('compile-scaffold', function() {
-	var source = [ 'app/lib/include/**/*.html', 'app/easel.html' ];
-		includes = 'app/lib/include/**/*.html';
-		easel = 'app/easel.html'; // Create your app in easel & use file-includes
-		dest = 'app/';
 
-	return gulp.src(source)
-		.pipe(newer(includes))
-		.pipe(remember(easel))
+	return gulp.src(sourced.html)
+		.pipe(newer(sourced.includes))
+		.pipe(remember(sourced.easel))
 		.pipe(fileinclude())
 		.pipe(rename("index.html"))
 		.pipe(browserSync.reload({stream:true, once: true}))
-		.pipe(gulp.dest(dest));
+		.pipe(gulp.dest(sourced.app));
 });
 
 gulp.task('sync-css', function () {
-    var source = 'app/lib/styles/paint.css';
-        dest = 'app/lib/styles/';
 
-    return gulp.src(source)
+    return gulp.src(sourced.css)
            .pipe(reload({stream:true}))
-           .pipe(gulp.dest(dest));
+           .pipe(gulp.dest(sourced.styles));
 });
 
 gulp.task('scaffold', function(callback) {

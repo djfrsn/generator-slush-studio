@@ -2,13 +2,11 @@
 var gulp = require('gulp');
 	prettify = require('gulp-prettify');
 
-gulp.task('prettify-easel', function () {
-    var easel = 'app/easel.html';
-    dest = 'app/';
+gulp.task('prettify-index', function () {
 	
-	return gulp.src(easel)
+	return gulp.src(sourced.index)
 	.pipe(prettify({
     "preserve-newlines": true
 })) // prettified easel to work on
-	.pipe(gulp.dest(dest));
+	.pipe(gulp.dest(sourced.app));
 });
