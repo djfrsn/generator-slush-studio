@@ -11,6 +11,6 @@ var gulp = require('gulp');
             return gulp.src(source)
             .pipe(plumber())
             .pipe(concat('brush.js'))
-            .on('error', function (err) { console.log(err.message); })
+            // Add gulp-notify
             .pipe(gulp.dest(dest));
 });

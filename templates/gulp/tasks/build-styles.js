@@ -21,7 +21,7 @@ gulp.task('build-styles', function () {
         .pipe(size())
         .pipe(minifyCSS())
         .pipe(size())
-        .on('error', function (err) { console.log(err.message); })
+        // Add gulp-notify
         .pipe(gulp.dest(dest));
         // Shit for build: minify, clean
 });

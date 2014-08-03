@@ -13,5 +13,5 @@ gulp.task('jshint', function() {
             .pipe(newer(app))
             .pipe(jshint())
             .pipe(jshint.reporter(stylish))
-            .on('error', function (err) { console.log(err.message); });
+            // Add gulp-notify;
 });

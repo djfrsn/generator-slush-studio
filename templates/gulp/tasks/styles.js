@@ -19,7 +19,7 @@ gulp.task('compile-sass', function () {
         .pipe(sass({sourcemap: true, sourcemapPath: '.', style: 'compact'}))
         .pipe(prefix('last 2 version', "> 1%", "Firefox ESR", "Opera 12.1", "ie 9", "ie 8", "ie 7"))
         .pipe(comb('zen'))
-        .on('error', function (err) { console.log(err.message); })
+        // Add gulp-notify
         .pipe(gulp.dest(dest));
 });
 
