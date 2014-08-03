@@ -1,6 +1,6 @@
 # slush-studio 
 
-> Slush generator for [studio](https://github.com/djfrsn/gulp-studio)
+> Slush generator for [Studi˚](https://github.com/djfrsn/gulp-studio)
 
 
 ## Getting Started
@@ -25,9 +25,9 @@ Run the generator from within the new folder:
 $ cd new-slush-studio && slush slush-studio
 ```
 
-## Getting To Know Studio
+## Getting To Know Studi˚
 
-To find out more about Studio, check out the [documentation](https://github.com/djfrsn/studio).
+To find out more about Studi˚, check out the [documentation](https://github.com/djfrsn/studio).
 
 ## Contributing
 
