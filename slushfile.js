@@ -61,6 +61,6 @@ var setup = {
     
     gulp.task('default', function(callback) {
         runSequence( 'rm-studio', 'clone-studio', 'liftStudio', 
-            'rm-studio', 'slush', 'finished', 'welcome',
+            'rm-studio', 'slush', 'welcome', 'finished', 
           callback);
     });
