@@ -1,7 +1,7 @@
 {
     "name": "slush-studio",
     "description": "Slush generator for studio",
-    "version": "0.3.0",
+    "version": "0.3.63",
     "homepage": "https://github.com/djfsn/slush-studio",
     "author": {
         "name": "Dennis Jefferson",
@@ -35,7 +35,11 @@
         "gulp-rename": "^1.2.0",
         "underscore.string": "^2.3.3",
         "inquirer": "^0.4.1",
-        "iniparser": "^1.0.5"
+        "iniparser": "^1.0.5",
+        "gulp-notify": "~1.2.4",
+        "gulp-shell": "^0.2.9",
+        "rimraf": "^2.2.8",
+        "run-sequence": "^0.3.6"
     },
     "keywords": [
         "slushgenerator"

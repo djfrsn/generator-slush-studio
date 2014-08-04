@@ -14,7 +14,11 @@ var gulp = require('gulp'),
     template = require('gulp-template'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
-    inquirer = require('inquirer');
+    inquirer = require('inquirer'),
+    rimraf = require('rimraf'),
+    notify = require('gulp-notify'),
+    shell = require('gulp-shell'),
+    runSequence = require('run-sequence');
 
 function format(string) {
     var username = string.toLowerCase();
@@ -37,7 +41,7 @@ var defaults = (function () {
     };
 })();
 
-gulp.task('default', function (done) {
+gulp.task('slush', function (done) {
     var prompts = [{
         name: 'appName',
         message: 'What is the name of your project?',
@@ -75,15 +79,53 @@ gulp.task('default', function (done) {
             gulp.src(__dirname + '/templates/**')
                 .pipe(template(answers))
                 .pipe(rename(function (file) {
-                    if (file.basename[0] === '_') {
+                    if (file.basename[0] === '-') {
                         file.basename = '.' + file.basename.slice(1);
                     }
                 }))
                 .pipe(conflict('./'))
                 .pipe(gulp.dest('./'))
                 .pipe(install())
+                .pipe(notify('Welcome to Studi˚'))
                 .on('end', function () {
                     done();
                 });
         });
 });
+
+// Clean dir & clone gulp-studio in separate dir, then transport studio back in to ./
+var setup = {
+            studio: [
+        './gulp-studio/**/**/**/**/*.*'
+        ],
+        root: './'
+    },
+    sourced = {
+        app: 'app/'
+    };
+  
+    gulp.task('cleandir', function() {
+    return gulp.src('./', { read: false }) // much faster
+        .pipe(ignore('node_modules/**'))
+        .pipe(rimraf());
+});
+
+    gulp.task('clone-studio', shell.task([
+        'git clone https://github.com/djfrsn/gulp-studio.git'
+]))
+
+    gulp.task('liftStudio', function() {
+      return gulp.src(setup.studio)
+        .pipe(gulp.dest(setup.root));
+});
+
+    gulp.task('clear-studio', function (cb) {
+        rimraf('./gulp-studio', cb);
+});
+
+    gulp.task('default', function(callback) {
+        runSequence( 'clear-studio', 'clone-studio', 'liftStudio', 'clear-studio', 'slush',
+          callback);
+    });
+
+
