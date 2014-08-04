@@ -15,85 +15,13 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
+    prompt = require('gulp-prompt'),
     rimraf = require('rimraf'),
     notify = require('gulp-notify'),
     shell = require('gulp-shell'),
     runSequence = require('run-sequence');
 
-function format(string) {
-    var username = string.toLowerCase();
-    return username.replace(/\s/g, '');
-}
-
-var defaults = (function () {
-    var homeDir = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,
-        workingDirName = process.cwd().split('/').pop().split('\\').pop(),
-        osUserName = homeDir && homeDir.split('/').pop() || 'root',
-        configFile = homeDir + '/.gitconfig',
-        user = {};
-    if (require('fs').existsSync(configFile)) {
-        user = require('iniparser').parseSync(configFile).user;
-    }
-    return {
-        appName: workingDirName,
-        userName: format(user.name) || osUserName,
-        authorEmail: user.email || ''
-    };
-})();
-
-gulp.task('slush', function (done) {
-    var prompts = [{
-        name: 'appName',
-        message: 'What is the name of your project?',
-        default: defaults.appName
-    }, {
-        name: 'appDescription',
-        message: 'What is the description?'
-    }, {
-        name: 'appVersion',
-        message: 'What is the version of your project?',
-        default: '0.1.0'
-    }, {
-        name: 'authorName',
-        message: 'What is the author name?',
-    }, {
-        name: 'authorEmail',
-        message: 'What is the author email?',
-        default: defaults.authorEmail
-    }, {
-        name: 'userName',
-        message: 'What is the github username?',
-        default: defaults.userName
-    }, {
-        type: 'confirm',
-        name: 'moveon',
-        message: 'Continue?'
-    }];
-    //Ask
-    inquirer.prompt(prompts,
-        function (answers) {
-            if (!answers.moveon) {
-                return done();
-            }
-            answers.appNameSlug = _.slugify(answers.appName);
-            gulp.src(__dirname + '/templates/**')
-                .pipe(template(answers))
-                .pipe(rename(function (file) {
-                    if (file.basename[0] === '-') {
-                        file.basename = '.' + file.basename.slice(1);
-                    }
-                }))
-                .pipe(conflict('./'))
-                .pipe(gulp.dest('./'))
-                .pipe(install())
-                .pipe(notify('Welcome to Studi˚'))
-                .on('end', function () {
-                    done();
-                });
-        });
-});
-
-// Clean dir & clone gulp-studio in separate dir, then transport studio back in to ./
+// Clean dir & clone fresh gulp-studi˚
 var setup = {
             studio: [
         './gulp-studio/**/**/**/**/*.*'
@@ -103,29 +31,55 @@ var setup = {
     sourced = {
         app: 'app/'
     };
-  
-    gulp.task('cleandir', function() {
-    return gulp.src('./', { read: false }) // much faster
-        .pipe(ignore('node_modules/**'))
-        .pipe(rimraf());
-});
 
     gulp.task('clone-studio', shell.task([
         'git clone https://github.com/djfrsn/gulp-studio.git'
-]))
+]));
+    
+    gulp.task('drop_templates', function () {
+            gulp.src(__dirname + '/templates/**')
+                .pipe(conflict(setup.root)) 
+                      .pipe(gulp.dest(setup.root));      
+});
+
+     gulp.task('welcome', function () {
+            gulp.src(setup.root)
+                .pipe(notify('Welcome to Studi˚'));
+});
 
     gulp.task('liftStudio', function() {
       return gulp.src(setup.studio)
         .pipe(gulp.dest(setup.root));
 });
 
-    gulp.task('clear-studio', function (cb) {
+    gulp.task('rm-studio', function (cb) {
         rimraf('./gulp-studio', cb);
 });
 
+    gulp.task('npm_install_confirm', function() {
+        return gulp.src('./')
+          .pipe(prompt.confirm('Would you like to install gulp-studi˚ dependencies?'))
+          .pipe(gulp.dest('./'));
+});
+    
+    gulp.task('npm_install', shell.task([
+          'sudo npm install'
+]));
+
+    gulp.task('finished', function(done) {
+        gulp.src(setup.root)
+        .on('finish', function () {
+        done(); // Finished!
+      });
+});
+    gulp.task('npm_install_prompt', function(callback) {
+        runSequence( 'npm_install_confirm', 'npm_install',
+          callback);
+});
+    
     gulp.task('default', function(callback) {
-        runSequence( 'clear-studio', 'clone-studio', 'liftStudio', 'clear-studio', 'slush',
+        runSequence( 'rm-studio', 'clone-studio', 'liftStudio', 
+            'rm-studio', 'drop_templates', 'npm_install_prompt', 
+            'finished',
           callback);
     });
-
-
