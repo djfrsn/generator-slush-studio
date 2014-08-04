@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 
 gulp.task('compile-sass', function () {
+  var filterCritical = gulpFilter(['*', '!app/styles/critical/**/*.scss']);
 
     return gulp.src(sourced.sass)
         .pipe(newer(sourced.sass))

@@ -101,11 +101,11 @@ Task boilerplate:
 var gulp = require('gulp');
 
 gulp.task('newTask', function () {
-	var source = 'my/source';
-	var dest = 'my/dist';
-	// do something
-	return gulp.src(source)
-	.pipe(gulp.dest(dest));
+    var source = 'my/source';
+    var dest = 'my/dist';
+    // do something
+    return gulp.src(source)
+    .pipe(gulp.dest(dest));
 });  
 ```
 Test your task with 
@@ -151,6 +151,13 @@ This boots a connect server that loads your project in the browser, then watches
 ### Build & Optimize
 
 ```sh
+$ gulp studio
+```
+
+Run all task essential to compile optimized '/app' 
+
+
+```sh
 $ gulp build-paint
 ```
 
@@ -170,32 +177,44 @@ Using bash to test all modules.......I know its ugly...but it works.
 
 ```sh
 # Gulp Studi˚ 
-alias gu="gulp"
+alias g="gulp"
 alias gstu="gulp studio"
+alias gp="gulp paint"
 alias gs="gulp styles"
 alias gsb="gulp build-styles"
-alias gj="gulp js"
-alias gjb="gulp build-js"
+alias gj="gulp brush"
 alias gsc="gulp scaffold"
 alias gscb="gulp build-scaffold"
 alias ga="gulp aux"
 alias gab="gulp build-aux"
 alias gc="gulp compile-critical"
 alias gic="gulp inline-critical"
-alias gpe="gulp prettify-easel"
+alias gpe="gulp prettify-index"
 alias gb="gulp build-studio"
-alias gw="gulp watch"
-alias test1="gs; gc; gsc; gic; gpe; gstu;"
-alias test2="gsb; gc; gsc; gab; gic; gscb; gb;"
-function tests {
-    test1
-    test2
+alias gbs="gulp browser-sync"
+alias gptest="gs; gc; gsc; gic; gj; gstu;"
+alias buildtest="gsb; gc; gsc; gab; gic; gscb; gj; gb;"
+alias ta="gulp test-app"
+alias tb="gulp test-build"
+alias t="gulp test" 
+# http://tinyurl.com/testruntime
+# real - start to finish
+# user - user mode code
+# sys - kernal code
+alias test="time runtest"
+function runtest {
+    ta
+    sleep 10
+    tb
 }
 ```
 
-Run test1, test2, or tests 
+Use 'gptest' after running 'gp' to test task browser sync & server
 
-Will create a test-studio task w/ run sequence for self testing
+Run 'gulp test-app && gulp test-build' to test all modules with the exception of 'gulp paint'
+
+Note: gulp-notify: [Error running Gulp] error Is a directory -
+
 
 ## Config
 
@@ -236,7 +255,7 @@ Studio is inspired by a desire to build a quick web dev platform with modern too
 + styles
 + compile-critical
 + inline-critical
-+ prettify-easel
++ prettify-index
 + styles
 + watch
 + studio

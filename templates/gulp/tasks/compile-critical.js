@@ -1,7 +1,5 @@
-// Compile critical css & transport to 'app/'
-var gulp = require('gulp'),
-    comb = require('gulp-csscomb'), // https://www.npmjs.org/package/gulp-csscomb
-    prefix = require('gulp-autoprefixer'); // https://github.com/ai/autoprefixer
+// Compile critical css 
+var gulp = require('gulp');
 
 gulp.task('compile-critical', function () {
 

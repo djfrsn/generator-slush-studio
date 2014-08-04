@@ -4,7 +4,8 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish');
 
 gulp.task('jshint', function() {
-
+	var filterBrushAndVendors = gulpFilter([ '*', '!app/lib/js/brush/*.js', '!app/lib/js/vendor/*.js' ]);
+           
             return gulp.src(sourced.jsdir)
             .pipe(filterBrushAndVendors)
             .pipe(newer(sourced.jsdir))

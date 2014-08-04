@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     size = require('gulp-filesize'); // https://github.com/Metrime/gulp-filesize
 
 gulp.task('build-styles', function () {
-
+    var filterCritical = gulpFilter(['*', '!app/styles/critical/**/*.scss']);
+    
     return gulp.src(sourced.sass)
         .pipe(newer(sourced.sass))
         .pipe(filterCritical)
