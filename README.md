@@ -5,6 +5,8 @@
 
 ## Getting Started
 
+[Git](http://git-scm.com/downloads) & [Slush](http://slushjs.github.io/#/) are required
+
 Install `slush-studio` globally:
 
 ```bash
