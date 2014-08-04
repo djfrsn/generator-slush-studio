@@ -5,6 +5,10 @@ var gulp = require('gulp'),
 	gulp.task('clean', function (cb) {
     rimraf('./dist', cb);
 	});
+	gulp.task('buildstudioMsg', function() {
+		gulp.src(sourced.app)
+  			.pipe(notify('Studi˚ built ≈'));
+	});
 
 	// This will run in this order:
 	// * styles-build, compile-critical  in series
@@ -14,7 +18,7 @@ var gulp = require('gulp'),
 gulp.task('build-studio', function(callback) {
 		runSequence( 'clean', 'build-styles', 'compile-critical', 'autoprefixCriticalCSS',
 	      ['scaffold', 'brush', 'build-aux'],
-	      'inline-critical', 'build-scaffold',
+	      'inline-critical', 'build-scaffold', 'buildstudioMsg',
 	      callback);
 });
  

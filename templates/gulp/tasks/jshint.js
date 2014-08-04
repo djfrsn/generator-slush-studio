@@ -8,7 +8,7 @@ gulp.task('jshint', function() {
            
             return gulp.src(sourced.jsdir)
             .pipe(filterBrushAndVendors)
-            .pipe(newer(sourced.jsdir))
+            .pipe(changed(sourced.app, {hasChanged: changed.compareSha1Digest}))
             .pipe(plumber({errorHandler: notify.onError()}))
             .pipe(jshint())
             .pipe(jshint.reporter(stylish))

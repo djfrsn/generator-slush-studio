@@ -7,7 +7,6 @@ var fs = require('fs');
 		index: 'app/index.html',
 		html: [ 'app/lib/include/**/*.html', 'app/easel.html' ],
 		includes: 'app/lib/include/**/*.html',
-		paint: 'app/lib/styles/paint.scss',
 		sass: 'app/lib/styles/**/*.scss',
 		css: 'app/lib/styles/paint.css',
 		criticalSASS: 'app/lib/styles/critical/**/*.scss',

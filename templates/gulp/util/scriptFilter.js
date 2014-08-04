@@ -1,5 +1,5 @@
 var path = require('path');
-	newer = require('gulp-newer');
+	changed = require('gulp-changed');
 	sass = require('gulp-ruby-sass');
 	notify = require('gulp-notify');
 	plumber = require('gulp-plumber');

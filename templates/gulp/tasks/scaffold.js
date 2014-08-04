@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 gulp.task('compile-scaffold', function() {
 
 	return gulp.src(sourced.html)
-		.pipe(newer(sourced.includes))
+		.pipe(changed(sourced.includes))
 		.pipe(remember(sourced.easel))
 		.pipe(plumber({errorHandler: notify.onError()}))
 		.pipe(fileinclude())

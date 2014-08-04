@@ -14,11 +14,11 @@ npm install
 Run 
 
 ```sh
-gulp paint
+gulp
 ```
 Vivy!
 
-Head to app/easel.html or app/lib/styles & start building your creation!  
+Head to app/easel.html || app/lib/ & start building your creation!  
 
 Use
 
@@ -28,11 +28,18 @@ Use
 
 format to include files. Easel includes will get compiled into index.html.  
 
+Try running 
+
+```sh
+gulp test
+``` 
+to ensure everything is stable.
+
 ## Features
 
 #### HTML 
 + Minify/Prettify
-+ Includes
++ [file-includes](https://www.npmjs.org/package/gulp-file-include)
 + H5BP
 
 #### CSS
@@ -51,13 +58,13 @@ format to include files. Easel includes will get compiled into index.html.
 #### Images
 + Compression with image-min
 
-#### Aux Task
-+ Use aux.js/build-aux.js to define misc files to transfer to your build folder 
+#### Template Task
++ Use gulp/task/template.js to bootstrap your own task
 
 #### Watch
 + Browser-Sync
 + Live Reload
-+ Local Server
++ [Connect](https://www.npmjs.org/package/gulp-connect)
 
 
 #### Build
@@ -113,14 +120,12 @@ Test your task with
 ```sh
 gulp newTask
 ```
-+ gulp-newer is automatically required on all task
++ gulp-changed is automatically required on all task
 Refer to community docs/write ups for details on how to customize your task further
 
 ### Task Performance
 
-['gulp-newer'](https://github.com/tschaub/gulp-newer) runs for gulp task. 
-
-Gulp task can be 2-3x faster with cache & 'newer' than without after files are cached(second run). 
+['gulp-changed'](https://www.npmjs.org/package/gulp-changed) runs for relevant gulp task.
 
 ### Gulp Commands
 
@@ -137,7 +142,7 @@ alias gjsb="gulp script-build"
 alias gh="gulp scaffold"
 alias ghb="gulp build-scaffold"
 alias gb="gulp build"
-alias gw="gulp watch"
+alias gw="gulp paint"
 ```
 
 #### Watch For Changes & Automatically Refresh Across Devices
@@ -209,22 +214,19 @@ function runtest {
 }
 ```
 
-Use 'gptest' after running 'gp' to test task browser sync & server
+Use 'gptest' after running 'gulp paint' to test task w/ browser sync & server
 
 Run 'gulp test-app && gulp test-build' to test all modules with the exception of 'gulp paint'
-
-Note: gulp-notify: [Error running Gulp] error Is a directory -
-
 
 ## Config
 
 #### Paths
 
-I plan on using a Paths var to organize....paths
+Global paths are set @ gulp/index.js
 
 ## Vendor CSS 
 
-h5bp
+jQuery 2.1.1 is located in node_modules/jquery
 
 ## Troubleshooting
 

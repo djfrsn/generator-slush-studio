@@ -1,6 +1,11 @@
    // Run test on task
 var gulp = require('gulp');
 
+gulp.task('testMsg', function() {
+		gulp.src(sourced.app)
+  			.pipe(notify('Test complete »'));
+});
+
 gulp.task('test-app', function(callback) {
 		runSequence( 'compile-sass', 'sync-css', 'compile-critical', 'scaffold',
 	      ['inline-critical', 'concat-js'],
@@ -16,7 +21,6 @@ gulp.task('test-build', function(callback) {
 });
 
 gulp.task('test', function(callback) {
-		runSequence( 'test-app',
-	      ['test-build'],
+		runSequence( 'test-app', 'test-build','testMsg',
 	      callback);
 });

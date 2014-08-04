@@ -1,6 +1,12 @@
    // Run all task essential to compile optimized '/app' 
 var gulp = require('gulp');
 
+	gulp.task('studioMsg', function() {
+		gulp.src(sourced.app)
+  			.pipe(notify('Studi˚ optimized ◊'));
+	});
+
+
 	// This will run in this order:
 	// * styles, compile-critical, scaffold in series
 	// * inline-critical and brush in parallel
@@ -8,5 +14,6 @@ var gulp = require('gulp');
 gulp.task('studio', function(callback) {
 		runSequence('styles', 'compile-critical', 'autoprefixCriticalCSS', 'scaffold',
 	      [ 'inline-critical', 'brush', 'prettify-index', 'combCSS' ],
+	      'studioMsg',
 	      callback);
 });

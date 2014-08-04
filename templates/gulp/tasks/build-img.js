@@ -6,7 +6,6 @@ var gulp       = require('gulp'),
 gulp.task('build-img', function() {
 
 	return gulp.src(dist.img)
-        .pipe(newer(dist.img)) // Pipe newer files
 		.pipe(size())
 		.pipe(imagemin()) // Optimize img
 		.pipe(size())

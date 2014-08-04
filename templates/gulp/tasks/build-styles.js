@@ -9,7 +9,6 @@ gulp.task('build-styles', function () {
     var filterCritical = gulpFilter(['*', '!app/styles/critical/**/*.scss']);
     
     return gulp.src(sourced.sass)
-        .pipe(newer(sourced.sass))
         .pipe(filterCritical)
         .pipe(sass({sourcemap: false})) 
         .pipe(prefix('last 2 version', "> 1%", "Firefox ESR", "Opera 12.1", "ie 9", "ie 8", "ie 7"))

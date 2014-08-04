@@ -6,7 +6,7 @@ gulp.task('compile-sass', function () {
   var filterCritical = gulpFilter(['*', '!app/styles/critical/**/*.scss']);
 
     return gulp.src(sourced.sass)
-        .pipe(newer(sourced.sass))
+        .pipe(changed(sourced.app, {hasChanged: changed.compareSha1Digest}))
         .pipe(filterCritical)
         .pipe(plumber({errorHandler: notify.onError()}))
         .pipe(sass({sourcemap: true, sourcemapPath: '.', style: 'compact'}))
