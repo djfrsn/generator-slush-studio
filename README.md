@@ -18,25 +18,18 @@ $ npm install -g slush-studio
 Create a new folder for your project:
 
 ```bash
-$ mkdir new-slush-studio
+$ mkdir new-studio
 ```
 
 Run the generator from within the new folder:
 
 ```bash
-$ cd new-slush-studio && slush slush-studio
+$ cd new-studio && slush slush-studio
 ```
 
 ## Getting To Know Studi˚
 
 To find out more about Studi˚, check out the [documentation](https://github.com/djfrsn/studio).
-
-## Contributing
-
-See the [CONTRIBUTING Guidelines](https://github.com/djfsn/slush-studio/blob/master/CONTRIBUTING.md)
-
-## Support
-If you have any problem or suggestion please open an issue [here](https://github.com/djfsn/slush-studio/issues).
 
 ## License 
 
@@ -60,6 +53,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
 OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+O EVENT SHALL THE AUTHORS OR COPYRIGHT
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
