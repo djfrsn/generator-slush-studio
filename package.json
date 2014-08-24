@@ -1,24 +1,24 @@
 {
   "name": "slush-studio",
   "description": "Slush generator for studio",
-  "version": "0.3.8",
-  "homepage": "https://github.com/djfsn/slush-studio",
+  "version": "0.3.8888",
+  "homepage": "https://github.com/djfrsn/slush-studio",
   "author": {
     "name": "Dennis Jefferson",
     "email": "dj@dennisjefferson.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/djfsn/slush-studio.git"
+    "url": "git://github.com/djfrsn/slush-studio.git"
   },
   "bugs": {
 
-    "url": "https://github.com/djfsn/slush-studio/issues"
+    "url": "https://github.com/djfrsn/slush-studio/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/djfsn/slush-studio/blob/master/LICENSE"
+      "url": "https://github.com/djfrsn/slush-studio/blob/master/LICENSE"
     }
   ],
   "main": "slushfile.js",
