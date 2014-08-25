@@ -24,7 +24,7 @@ $ mkdir new-studio
 Run the generator from within the new folder:
 
 ```bash
-$ cd new-studio && slush slush-studio
+$ cd new-studio && slush studio
 ```
 
 ## Getting To Know Studi˚
