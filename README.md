@@ -1,6 +1,8 @@
 # slush-studio 
 
-> Slush generator for [Studi˚](https://github.com/djfrsn/gulp-studio)
+> Slush generator for (WIP)[Studi˚](https://github.com/djfrsn/gulp-studio)
+
+Studi˚ is currently undergoing real world test to see what is needed and what issues may exist. Usage without the desire to maintain Studi˚ is not recommended.
 
 
 ## Getting Started
