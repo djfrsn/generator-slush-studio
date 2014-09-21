@@ -94,8 +94,12 @@ gulp.task('rm-vvv', function (cb) {
         rimraf('./vvv', cb);
 });
 
+gulp.task('rm-app', function (cb) {
+        rimraf('./app', cb);
+});
+
     gulp.task('rm-studio', function (callback) {
-        runSequence( ['rm-vvv', 'rm-gulp-studio-vvv', 'rm-gulp-studio' ],
+        runSequence( ['rm-vvv', 'rm-app', 'rm-gulp-studio-vvv', 'rm-gulp-studio' ],
           callback);
 });
     gulp.task('slush', function () {
