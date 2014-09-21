@@ -82,6 +82,10 @@ gulp.task('liftStudio', function(callback) {
           callback);
 });
 
+    gulp.task('rm-gulp', function (cb) {
+        rimraf('./gulp', cb);
+});
+
     gulp.task('rm-gulp-studio', function (cb) {
         rimraf('./gulp-studio', cb);
 });
@@ -99,7 +103,7 @@ gulp.task('rm-app', function (cb) {
 });
 
     gulp.task('rm-studio', function (callback) {
-        runSequence( ['rm-vvv', 'rm-app', 'rm-gulp-studio-vvv', 'rm-gulp-studio' ],
+        runSequence( ['rm-vvv', 'rm-app', 'rm-gulp', 'rm-gulp-studio-vvv', 'rm-gulp-studio' ],
           callback);
 });
     gulp.task('slush', function () {
