@@ -11,6 +11,7 @@
 var gulp = require('gulp'),
     shell = require('gulp-shell'),
     install = require('gulp-install'),
+    prompt = require('gulp-prompt'),
     conflict = require('gulp-conflict'),
     rimraf = require('rimraf'),
     notify = require('gulp-notify'),
@@ -21,30 +22,82 @@ var setup = {
             studio: [
         './gulp-studio/**/**/**/**/*.*'
         ],
+        studio_vvv: [
+        './gulp-studio-vvv/**/**/**/**/*.*'
+        ],
         root: './'
     },
     sourced = {
         app: 'app/'
     };
 
-    gulp.task('clone-studio', shell.task([
-        'git clone https://github.com/djfrsn/gulp-studio.git'
-]));
+var dev_environment = 'dev_environment';
+
+gulp.task('studio-wizard', function(){
+
+    return gulp.src(setup.root, {read: false})
+        .pipe(prompt.prompt([
+            {
+                type: 'input',
+                name: 'userInput',
+                message: 'Choose your dev environment( html || wordpress )'
+            }
+        ], function(res){
+            dev_environment = res.userInput;
+            if (dev_environment === 'html') {
+                dev_environment = 'git clone https://github.com/djfrsn/gulp-studio.git'
+            } else if (dev_environment === 'wordpress') {
+                dev_environment = 'git clone https://github.com/djfrsn/gulp-studio-vvv.git && mkdir vvv && cd vvv && git clone git://github.com/Varying-Vagrant-Vagrants/VVV.git vagrant-local'
+            } else {
+                dev_environment = 'git clone https://github.com/djfrsn/gulp-studio.git'
+            }
+        }));
+});
+    
+
+    gulp.task('clone-studio', ['studio-wizard'], function() {
+    return gulp.src(setup.root)
+        .pipe(shell([
+      dev_environment
+    ]))
+});
 
      gulp.task('welcome', function () {
         gulp.src(setup.root)
             .pipe(notify('Welcome to Studi˚'));
 });
 
-    gulp.task('liftStudio', function() {
+    gulp.task('liftGulpStudio', function() {
         return gulp.src(setup.studio)
             .pipe(gulp.dest(setup.root));
 });
 
-    gulp.task('rm-studio', function (cb) {
+gulp.task('liftGulpStudioVVV', function() {
+        return gulp.src(setup.studio_vvv)
+            .pipe(gulp.dest(setup.root));
+});
+
+gulp.task('liftStudio', function(callback) {
+        runSequence( ['liftGulpStudio', 'liftGulpStudioVVV' ],
+          callback);
+});
+
+    gulp.task('rm-gulp-studio', function (cb) {
         rimraf('./gulp-studio', cb);
 });
 
+gulp.task('rm-gulp-studio-vvv', function (cb) {
+        rimraf('./gulp-studio-vvv', cb);
+});
+
+gulp.task('rm-vvv', function (cb) {
+        rimraf('./vvv', cb);
+});
+
+    gulp.task('rm-studio', function (callback) {
+        runSequence( ['rm-vvv', 'rm-gulp-studio-vvv', 'rm-gulp-studio' ],
+          callback);
+});
     gulp.task('slush', function () {
         gulp.src(__dirname + '/templates/**')
             .pipe(conflict(setup.root)) 
@@ -60,7 +113,7 @@ var setup = {
 });
     
     gulp.task('default', function(callback) {
-        runSequence( 'rm-studio', 'clone-studio', 'liftStudio', 
-            'rm-studio', 'slush', 'welcome', 'finished', 
+        runSequence( 'rm-studio', 'clone-studio', ['liftGulpStudio', 'liftGulpStudioVVV'], 
+            'rm-gulp-studio-vvv', 'rm-gulp-studio', 'slush', 'welcome', 'finished', 
           callback);
     });

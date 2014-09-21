@@ -1,7 +1,7 @@
 {
   "name": "slush-studio",
-  "description": "Slush generator for studio",
-  "version": "0.3.91",
+  "description": "A slush generator for scaffolding out front-end enviroments (using Studi˚)",
+  "version": "0.4.9",
   "homepage": "https://github.com/djfrsn/slush-studio",
   "author": {
     "name": "Dennis Jefferson",
@@ -41,6 +41,6 @@
     "run-sequence": "^0.3.6"
   },
   "keywords": [
-    "slushgenerator"
+    "slushgenerator, scaffolding"
   ]
 }
