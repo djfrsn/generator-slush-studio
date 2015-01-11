@@ -25,6 +25,9 @@ var setup = {
         studio_vvv: [
         './gulp-studio-vvv/**/**/**/**/*.*'
         ],
+        quickdraw: [
+        './gulp-quickdraw/**/**/*.*'
+        ],
         root: './'
     },
     sourced = {
@@ -40,7 +43,7 @@ gulp.task('studio-wizard', function(){
             {
                 type: 'input',
                 name: 'userInput',
-                message: 'Choose your dev environment( html || wordpress )'
+                message: 'Choose your dev environment( html || wordpress || quickdraw )'
             }
         ], function(res){
             dev_environment = res.userInput;
@@ -48,6 +51,9 @@ gulp.task('studio-wizard', function(){
                 dev_environment = 'git clone https://github.com/djfrsn/gulp-studio.git'
             } else if (dev_environment === 'wordpress') {
                 dev_environment = 'git clone https://github.com/djfrsn/gulp-studio-vvv.git && mkdir vvv && cd vvv && git clone git://github.com/Varying-Vagrant-Vagrants/VVV.git vagrant-local'
+            } 
+            else if (dev_environment === 'quickdraw') {
+                dev_environment = 'git clone https://github.com/djfrsn/gulp-quickdraw.git'
             } else {
                 dev_environment = 'git clone https://github.com/djfrsn/gulp-studio.git'
             }
@@ -74,6 +80,11 @@ gulp.task('studio-wizard', function(){
 
 gulp.task('liftGulpStudioVVV', function() {
         return gulp.src(setup.studio_vvv)
+            .pipe(gulp.dest(setup.root));
+});
+
+gulp.task('liftQuickdraw', function() {
+        return gulp.src(setup.quickdraw)
             .pipe(gulp.dest(setup.root));
 });
 
@@ -121,7 +132,7 @@ gulp.task('rm-app', function (cb) {
 });
     
     gulp.task('default', function(callback) {
-        runSequence( 'rm-studio', 'clone-studio', ['liftGulpStudio', 'liftGulpStudioVVV'], 
+        runSequence( 'rm-studio', 'clone-studio', ['liftGulpStudio', 'liftGulpStudioVVV', 'liftQuickdraw' ], 
             'rm-gulp-studio-vvv', 'rm-gulp-studio', 'slush', 'welcome', 'finished', 
           callback);
     });
